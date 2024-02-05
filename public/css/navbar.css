@@ -1,0 +1,49 @@
+nav{
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(255, 0, 0);
+    background-color: rgb(234, 233, 233);
+    /* z-index: 10; */
+    opacity: 70%;
+}
+
+.left{
+    margin-left: 80px;
+}
+
+.left img{
+    width: 120px;
+    height: 120px;
+    /* opacity: 100%; */
+}
+
+.right{
+    margin-right: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.right a{
+    text-decoration: none;
+    /* padding: 30px; */
+    margin: 30px;
+    font-family: 'poppins';
+    font-size: 20px;
+    color: blue;
+}
+
+.right .login{
+    background-color: rgb(237, 107, 107);
+    color: white;
+    width: 90px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
