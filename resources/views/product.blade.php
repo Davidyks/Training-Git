@@ -23,60 +23,38 @@
     </nav>
     
     <div class="product">
+        <a href="/add-product">Add Product</a>
         <br>
         <h1>Man Shoes</h1>
         <div class="manShoes">
-            <div>
-                <img src="{{ asset('asset/Man Formal Shoes.webp') }}" alt="">
-                <h2>Name: Man Formal Shoes</h2>
-                <h2>Price: Rp300.000</h2>
-                <h2>Size: 40-45</h2>
-                <h2>Color: Black</h2>
-            </div>
-
-            <div>
-                <img src="{{ asset('asset/Man Running Shoes.webp') }}" alt="">
-                <h2>Name: Man Running Shoes</h2>
-                <h2>Price: Rp500.000</h2>
-                <h2>Size: 40-45</h2>
-                <h2>Color: Gray</h2>
-            </div>
-
-            <div>
-                <img src="{{ asset('asset/Man Sneaker.jpg') }}" alt="">
-                <h2>Name: Man Sneaker</h2>
-                <h2>Price: Rp400.000</h2>
-                <h2>Size: 40-45</h2>
-                <h2>Color: White</h2>
-            </div>
+            @forelse($shoes as $s)
+                <div>
+                    <img src="{{ asset('storage/'.$s->Photo) }}" alt="{{ $s->Photo }}">
+                    <h2>Name: {{ $s->Name }}</h2>
+                    <h2>Price: Rp{{ $s->Price }}</h2>
+                    <h2>Size: {{ $s->Size }}</h2>
+                    <h2>Color: {{ $s->Color }}</h2>
+                    <button class="btn btn-success">
+                        <a href="/edit-product/{{ $s->id }}">Edit</a>
+                    </button>
+                    <br>
+                    <form action="/delete-product/{{ $s->id }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button class="btn btn-danger" type="submit">
+                            Delete
+                        </button>
+                    </form>
+                </div>
+            @empty
+                <p>{{ "Shoes empty." }}</p>
+            @endforelse
         </div>
 
         <br>
         <h1>Woman Shoes</h1>
         <div class="womanShoes">
-            <div>
-                <img src="{{ asset('asset/Woman Formal Shoes.jpg') }}" alt="">
-                <h2>Name: Woman Formal Shoes</h2>
-                <h2>Price: Rp300.000</h2>
-                <h2>Size: 37-42</h2>
-                <h2>Color: Black</h2>
-            </div>
-
-            <div>
-                <img src="{{ asset('asset/Woman Running Shoes.jpg') }}" alt="">
-                <h2>Name: Woman Running Shoes</h2>
-                <h2>Price: Rp500.000</h2>
-                <h2>Size: 37-42</h2>
-                <h2>Color: Purple</h2>
-            </div>
-
-            <div>
-                <img src="{{ asset('asset/Woman Sneaker.jpg') }}" alt="">
-                <h2>Name: Woman Sneaker</h2>
-                <h2>Price: Rp400.000</h2>
-                <h2>Size: 37-42</h2>
-                <h2>Color: White</h2>
-            </div>
+           
         </div>
     </div>
 
